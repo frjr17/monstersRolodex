@@ -4,23 +4,42 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
-      name: {firstName:"Adrien",lastName:'Valencia'},
-      company:'ZTM'
+      monsters: [
+
+        {
+          name: "Linda",
+          id:123
+        },
+        {
+          name: "Frank",
+          id:234
+        },
+        {
+          name: "Jacky",
+          id:345
+        },
+        {
+          name: "Adrien",
+          id:456
+        },
+      ]
     }
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Hi {this.state.name.firstName} {this.state.name.lastName}, I work at {this.state.company}</p>
-          <button onClick={()=>{this.setState({name:{firstName:'Hernan', lastName:"Dominguez"}})}}>Change name</button>
-        </header>
+        {
+          this.state.monsters.map((monster) => {
+            return <div key={monster.id}>
+              <h1>{monster.name}</h1>
+            </div>
+          })
+        }
       </div>
     )
   }
